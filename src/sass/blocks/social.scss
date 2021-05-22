@@ -1,0 +1,32 @@
+.social {
+  @include list;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 0;
+  margin-top: 15px;
+
+}
+
+.social__item {
+  @include reset-indent;
+  margin-right: 15px;
+
+  &:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.social__link:hover,
+.social__link:focus {
+  path {
+    fill: $blue;
+  }
+}
+
+.social__link:active {
+  path {
+    fill: $footer-darkgrey;
+  }
+}

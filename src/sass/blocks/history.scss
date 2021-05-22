@@ -1,0 +1,56 @@
+.history {
+  margin: 0 auto 110px;
+}
+
+.history__wrapper {
+  padding: 22px 70px 35px;
+  background-color: $background-gray;
+}
+
+.history__title {
+  @include font(500, 28px, 39px);
+  margin-bottom: 50px
+}
+
+.history__list {
+  @include list;
+  @include font(400, 18px, 23px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 250px;
+  margin-bottom: 20px;
+}
+
+.history__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  margin-bottom: 24px;
+
+    &--arrow {
+      display: inline-block;
+      width: 40px;
+      height: 16px;
+      margin-left: 12px;
+      margin-right: 12px;
+      background-image: url("../../img/arrow_history.svg");
+      background-repeat: no-repeat;
+    }
+
+  &::after {
+    @include pseudo();
+    top: -35px;
+    right: -130px;
+    width: 1px;
+    height: 100px;
+    background-color: $line-grey;
+  }
+
+  &:nth-child(even)::after {
+    width: 0;
+  }
+}
+
+.history__button {
+  padding: 15px 20px;
+}

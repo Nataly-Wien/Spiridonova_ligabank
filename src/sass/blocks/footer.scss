@@ -1,0 +1,51 @@
+.footer {
+  background-color: $background-gray;
+  padding-bottom: 60px;
+}
+
+.footer__wrapper {
+  padding-top: 50px;
+  display: grid;
+  grid-template-columns: 250px 150px 198px 150px 1fr;
+  grid-column-gap: 80px;
+}
+
+.footer__logo {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.footer__text {
+  @include font(400, 12px, 17px);
+  margin: 0;
+}
+
+.footer__contact-block {
+  position: relative;
+  margin-top: 10px;
+  padding-left: 27px;
+
+  &::before {
+    @include pseudo();
+    width: 16px;
+    height: 16px;
+    top: 5px;
+    left: -5px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &--mobile::before {
+    background-image: url("../../img/mobile.svg")
+  }
+
+   &--phone::before {
+    background-image: url("../../img/phone.svg")
+  }
+}
+
+.footer__contact {
+  @include font(500, 16px, 23px);
+  margin: 0;
+  margin-bottom: 3px;
+}

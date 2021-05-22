@@ -1,0 +1,11 @@
+.main-nav {
+  @include font(normal, 16px, 19px);
+  display: flex;
+  align-items: flex-start;
+}
+
+.main-nav__logo {
+  display: block;
+  margin-top: 6px;
+  margin-right: 52px;
+}

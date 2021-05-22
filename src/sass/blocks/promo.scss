@@ -1,0 +1,54 @@
+.promo {
+  min-height: 400px;
+  background-color: $blue;
+  background-image:
+    linear-gradient(-180.24deg, rgba(32, 39, 179, 0) 36.31%, #2027B3 99.79%),
+    linear-gradient(-180.24deg, rgba(32, 39, 179, 0) 32.89%, #2027B3 99.79%);
+  background-size:
+    500px 100%,
+    500px 100%;
+  background-position:
+    top 0 left 0,
+    right 0 bottom 0;
+  background-repeat: no-repeat;
+}
+
+.promo__wrapper {
+  padding-top: 102px;
+  padding-bottom: 115px;
+  padding-left: 268px;
+  background-color: $blue;
+  background-image:
+    url("../../img/cards.png"),
+    linear-gradient(180.24deg, rgba(32, 39, 179, 0) 36.31%, #2027B3 99.79%),
+    linear-gradient(183.47deg, rgba(56, 65, 255, 0) 66.3%, #3841FF 97.14%),
+    linear-gradient(183.47deg, rgba(56, 65, 255, 0) 27.26%, #3841FF 97.14%),
+    linear-gradient(180.24deg, rgba(32, 39, 179, 0) 32.89%, #2027B3 99.79%);
+  background-size:
+    444px 286px,
+    150px 100%,
+    150px 67%,
+    270px 67%,
+    298px 100%;
+  background-position:
+    top 61px left 699px,
+    top 0 left 0,
+    left 150px bottom 0,
+    left 797px bottom 0,
+    right 0 bottom 0;
+  background-repeat: no-repeat;
+}
+
+.promo__title {
+  @include reset-indent;
+  @include font(700, 54px, 63px);
+  margin-bottom: 8px;
+  color: $title-light;
+}
+
+.promo__slogan {
+  @include reset-indent;
+  @include font(400, 22px, 26px);
+  margin-bottom: 35px;
+  color: $light;
+}

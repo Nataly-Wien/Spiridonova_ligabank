@@ -1,0 +1,12 @@
+.main-menu {
+  @include list;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.main-menu__item {
+  margin: 0;
+  margin-right: 15px;
+  padding: 0;
+}

@@ -1,0 +1,35 @@
+.user-nav {
+  @include list;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-left: auto;
+}
+
+.user-nav__item {
+  margin: 0;
+}
+
+.user-nav__link {
+  padding-right: 0;
+
+  &--enter {
+    svg {
+      margin-right: 6px;
+      margin-bottom: -7px;
+    }
+  }
+}
+
+.user-nav__link:hover,
+.user-nav__link:focus {
+  path {
+    fill: $blue;
+  }
+}
+
+.user-nav__link:active {
+  path {
+    fill: $footer-darkgrey;
+  }
+}

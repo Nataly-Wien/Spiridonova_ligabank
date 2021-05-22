@@ -1,0 +1,10 @@
+.converter {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+
+.converter__title {
+  @include reset-indent;
+  @include font(700, 41px, 57px);
+  margin-bottom: 50px;
+}

@@ -1,0 +1,11 @@
+.footer-menu {
+  @include list;
+  @include font(500, 16px, 23px);
+  flex-basis: 160px;
+  margin-top: 3px;
+}
+
+.footer-menu__link {
+  color: $dark;
+  padding: 4px 3px;
+}

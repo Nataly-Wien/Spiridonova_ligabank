@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <base href="/">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Лига Банк</title>
+  <link rel="stylesheet" href="css/style.min.css">
+  <link rel="preload" href="fonts/roboto-v27-latin_cyrillic-regular.woff2" as="font">
+  <link rel="preload" href="fonts/roboto-v27-latin_cyrillic-500.woff2" as="font">
+  <link rel="preload" href="fonts/roboto-v27-latin_cyrillic-700.woff2" as="font">
+</head>
+
+<body class="page">
+  <header class="page-header">
+    <nav class="main-nav container">
+      <a class="main-nav__logo" href="#">
+        <img class="logo-img" src="img/logo_ligabank.svg" width="150" height="27" alt="Логотип Лига Банка">
+      </a>
+      <ul class="main-nav__main-menu main-menu">
+        <li class="main-menu__item">
+          <a class="main-menu__link menu-link" href="#">
+            Услуги
+          </a>
+        </li>
+        <li class="main-menu__item">
+          <a class="main-menu__link menu-link" href="#">
+            Рассчитать кредит
+          </a>
+        </li>
+        <li class="main-menu__item">
+          <a class="main-menu__link menu-link" href="#">
+            Конвертер валют
+          </a>
+        </li>
+        <li class="main-menu__item">
+          <a class="main-menu__link menu-link" href="#">
+            Контакты
+          </a>
+        </li>
+        <li class="main-menu__item">
+          <a class="main-menu__link menu-link" href="#">
+            Задать вопрос
+          </a>
+        </li>
+      </ul>
+      <ul class="main-nav__user-nav user-nav">
+        <li class="user-nav__item">
+          <a class="user-nav__link user-nav__link--enter menu-link" href="#">
+            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 22" width="20" height="22">
+              <path
+                d="M2.222 14.3h2.222v5.5h13.334V2.2H4.444v5.5H2.222V1.1c0-.292.117-.572.326-.778.208-.206.49-.322.785-.322H18.89c.295 0 .577.116.786.322.208.206.325.486.325.778v19.8c0 .292-.117.572-.325.778a1.117 1.117 0 01-.786.322H3.333c-.294 0-.577-.116-.785-.322a1.095 1.095 0 01-.326-.778v-6.6zM8.89 9.9V6.6l5.555 4.4-5.555 4.4v-3.3H0V9.9h8.889z"
+                fill="#1F1E25" />
+            </svg>
+            Войти в Интернет-банк
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-main">
+    <section class="promo">
+      <div class="promo__wrapper container">
+        <h1 class="promo__title">Лига Банк</h1>
+        <h2 class="promo__slogan">
+          Кредиты на любой случай
+        </h2>
+        <a class="promo__button button button--white" href="#">
+          Рассчитать кредит
+        </a>
+      </div>
+    </section>
+
+    <section class="converter container">
+      <h2 class="converter__title">
+        Конвертер валют
+      </h2>
+      <form class="converter__form converter-form" action="" method="post">
+        <!-- action?-->
+        <fieldset class="converter-form__fieldset">
+          <legend class="converter-form__legend" for="have">У меня есть</legend>
+          <input class="converter-form__control converter-form__control--input" type="text" name="have" id="have"
+            value=1000>
+          <select class="converter-form__control converter-form__control--select" type="text" name="currency-have"
+            id="currency-have" value="RUB">
+            <option value="RUB">RUB</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBR">GBR</option>
+            <option value="CNY">CNY</option>
+          </select>
+        </fieldset>
+
+        <div class="converter-form__arrows"></div>
+        <fieldset class="converter-form__fieldset">
+          <legend class="converter-form__legend" for="need">Хочу приобрести</legend>
+          <input class="converter-form__control converter-form__control--input" type="text" name="need" id="need">
+          <select class="converter-form__control converter-form__control--select" type="text" name="currency-need"
+            id="currency-need" value="USD">
+            <option value="RUB">RUB</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+            <option value="GBR">GBR</option>
+            <option value="CNY">CNY</option>
+          </select>
+        </fieldset>
+        <div class="converter-form__wrapper">
+          <input class="converter-form__control converter-form__control--input converter-form__control--input-date"
+            type="text" name="date" id="date" value="1.12.2020" required> <!-- required??? -->
+          <button class="converter-form__calender" type="button" id="calender"
+            aria-label="Открыть календарь для выбора даты"></button>
+        </div>
+        <button class="converter-form__button button button--blue" type="submit">Сохранить результат</button>
+      </form>
+    </section>
+
+    <section class="history container">
+      <div class="history__wrapper">
+        <h2 class="history__title">История конвертаций</h2>
+        <ul class="history__list">
+          <li class="history__item">
+            <span class="history__item--date">25.11.2020</span>
+            <div class="history__item-wrapper">
+              <span class="history__item--before">1000 RUB</span>
+              <span class="history__item--arrow">
+                <span class="visually-hidden">
+                  &#10230;
+                </span>
+              </span>
+              <span class="history__item--after">13,1234 USD</span>
+            </div>
+          </li>
+          <li class="history__item">
+            <span class="history__item--date">26.11.2020</span>
+            <div class="history__item-wrapper">
+              <span class="history__item--before">1000 RUB</span>
+              <span class="history__item--arrow">
+                <span class="visually-hidden">
+                  &#10230;
+                </span>
+              </span>
+              <span class="history__item--after">13,1234 USD</span>
+            </div>
+          </li>
+          <li class="history__item">
+            <span class="history__item--date">27.11.2020</span>
+            <div class="history__item-wrapper">
+              <span class="history__item--before">1000 RUB</span>
+              <span class="history__item--arrow">
+                <span class="visually-hidden">
+                  &#10230;
+                </span>
+              </span>
+              <span class="history__item--after">13,1234 USD</span>
+            </div>
+          </li>
+          <li class="history__item">
+            <span class="history__item--date">28.11.2020</span>
+            <div class="history__item-wrapper">
+              <span class="history__item--before">1000 RUB</span>
+              <span class="history__item--arrow">
+                <span class="visually-hidden">
+                  &#10230;
+                </span>
+              </span>
+              <span class="history__item--after">13,1234 USD</span>
+            </div>
+          </li>
+          <li class="history__item">
+            <span class="history__item--date">29.11.2020</span>
+            <div class="history__item-wrapper">
+              <span class="history__item--before">1000 RUB</span>
+              <span class="history__item--arrow">
+                <span class="visually-hidden">
+                  &#10230;
+                </span>
+              </span>
+              <span class="history__item--after">13,1234 USD</span>
+            </div>
+          </li>
+          <li class="history__item">
+            <span class="history__item--date">30.11.2020</span>
+            <div class="history__item-wrapper">
+              <span class="history__item--before">1000 RUB</span>
+              <span class="history__item--arrow">
+                <span class="visually-hidden">
+                  &#10230;
+                </span>
+              </span>
+              <span class="history__item--after">13,1 USD</span>
+            </div>
+          </li>
+          <li class="history__item">
+            <span class="history__item--date">31.11.2020</span>
+            <div class="history__item-wrapper">
+              <span class="history__item--before">100 RUB</span>
+              <span class="history__item--arrow">
+                <span class="visually-hidden">
+                  &#10230;
+                </span>
+              </span>
+              <span class="history__item--after">13,1234 USD</span>
+            </div>
+          </li>
+          <li class="history__item">
+            <span class="history__item--date">31.11.2020</span>
+            <div class="history__item-wrapper">
+              <span class="history__item--before">1000 RUB</span>
+              <span class="history__item--arrow">
+                <span class="visually-hidden">
+                  &#10230;
+                </span>
+              </span>
+              <span class="history__item--after">13,1234 USD</span>
+            </div>
+          </li>
+          <li class="history__item">
+            <span class="history__item--date">31.11.2020</span>
+            <div class="history__item-wrapper">
+              <span class="history__item--before">1000 RUB</span>
+              <span class="history__item--arrow">
+                <span class="visually-hidden">
+                  &#10230;
+                </span>
+              </span>
+              <span class="history__item--after">13,1234 USD</span>
+            </div>
+          </li>
+        </ul>
+        <button class="history__button button button--blue">Очистить историю</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__wrapper container">
+      <section class="footer__info">
+        <h3 class="visually-hidden">О нас</h3>
+        <a class="footer__logo" href="#">
+          <img class="logo-img" src="img/logo_ligabank.svg" width="150" height="27" alt="Логотип Лига Банка">
+        </a>
+        <p class="footer__text">150015, г. Москва, ул. Московская, д. 32</p>
+        <p class="footer__text">Генеральная лицензияБанка России №1050</p>
+        <p class="footer__text">Ⓒ Лига Банк, 2019</p>
+      </section>
+      <ul class="footer__menu footer-menu">
+        <li class="footer-menu__item">
+          <a class="footer-menu__link menu-link" href="#">
+            Услуги
+          </a>
+        </li>
+        <li class="footer-menu__item">
+          <a class="footer-menu__link menu-link" href="#">
+            Рассчитать кредит
+          </a>
+        </li>
+        <li class="footer-menu__item">
+          <a class="footer-menu__link menu-link" href="#">
+            Контакты
+          </a>
+        </li>
+        <li class="footer-menu__item">
+          <a class="footer-menu__link menu-link" href="#">
+            Задать вопрос
+          </a>
+        </li>
+      </ul>
+      <section class="footer__contact-block footer__contact-block--mobile">
+        <h3 class="visually-hidden">Короткий номер</h3>
+        <p class="footer__contact">*0904</p>
+        <p class="footer__text">Бесплатно для абонентов МТС, Билайн, Мегафон, Теле2</p>
+      </section>
+
+      <section class="footer__contact-block footer__contact-block--phone">
+        <h3 class="visually-hidden">Телефон</h3>
+        <p class="footer__contact">8 800 111 22 33</p>
+        <p class="footer__text">Бесплатный для всех городов России</p>
+      </section>
+
+      <ul class="footer__social-list social">
+        <li class="social__item">
+          <a class="social__link" href="#">
+            <span class="visually-hidden">Фейсбук</span>
+            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 16" width="9" height="16">
+              <path
+                d="M6 9.2h2.143L9 6H6V4.4c0-.824 0-1.6 1.714-1.6H9V.112A25.85 25.85 0 006.551 0c-2.327 0-3.98 1.326-3.98 3.76V6H0v3.2h2.571V16H6V9.2z"
+                fill="#1F1E25" />
+            </svg>
+          </a>
+        </li>
+        <li class="social__item">
+          <a class="social__link" href="#">
+            <span class="visually-hidden">Инстаграм</span>
+            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+              <path
+                d="M8 0c2.174 0 2.445.008 3.298.048.852.04 1.432.174 1.942.372a3.9 3.9 0 011.418.922c.406.4.721.884.922 1.418.198.51.332 1.09.372 1.942C15.99 5.555 16 5.826 16 8s-.008 2.445-.048 3.298c-.04.852-.174 1.432-.372 1.942a3.907 3.907 0 01-.922 1.418c-.4.406-.884.721-1.418.922-.51.198-1.09.332-1.942.372C10.445 15.99 10.174 16 8 16s-2.445-.008-3.298-.048c-.852-.04-1.432-.174-1.942-.372a3.911 3.911 0 01-1.418-.922A3.923 3.923 0 01.42 13.24c-.198-.51-.332-1.09-.372-1.942C.01 10.445 0 10.174 0 8s.008-2.445.048-3.298C.088 3.85.222 3.27.42 2.76c.2-.534.515-1.018.922-1.418.4-.407.884-.721 1.418-.922C3.27.222 3.85.088 4.702.048 5.555.01 5.826 0 8 0zm0 4a4 4 0 100 8 4 4 0 000-8zm5.2-.2a1 1 0 10-2 0 1 1 0 002 0zM8 5.6a2.4 2.4 0 110 4.8 2.4 2.4 0 010-4.8z"
+                fill="#1F1E25" />
+            </svg>
+          </a>
+        </li>
+        <li class="social__item">
+          <a class="social__link" href="#">
+            <span class="visually-hidden">Твитер</span>
+            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 13" width="16" height="13">
+              <path
+                d="M16 1.543c-.6.265-1.236.44-1.886.516A3.292 3.292 0 0015.558.244a6.564 6.564 0 01-2.085.796A3.283 3.283 0 007.88 4.032 9.325 9.325 0 011.114.604a3.28 3.28 0 001.016 4.38 3.273 3.273 0 01-1.487-.41v.04a3.281 3.281 0 002.633 3.218c-.484.13-.99.15-1.483.056a3.283 3.283 0 003.066 2.279A6.59 6.59 0 010 11.525 9.29 9.29 0 005.031 13c6.039 0 9.341-4.999 9.341-9.334 0-.141-.004-.284-.01-.424A6.667 6.667 0 0016 1.544z"
+                fill="#1F1E25" />
+            </svg>
+          </a>
+        </li>
+        <li class="social__item">
+          <a class="social__link" href="#">
+            <span class="visually-hidden">Youtube</span>
+            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 13" width="16" height="13">
+              <path
+                d="M15.634 2.03C16 3.478 16 6.5 16 6.5s0 3.023-.366 4.47c-.203.8-.797 1.43-1.55 1.643C12.717 13 8 13 8 13s-4.714 0-6.084-.387c-.756-.216-1.35-.845-1.55-1.643C0 9.523 0 6.5 0 6.5s0-3.022.366-4.47c.203-.8.797-1.43 1.55-1.643C3.286 0 8 0 8 0s4.717 0 6.084.387c.756.216 1.35.845 1.55 1.643zM6.4 9.344L11.2 6.5 6.4 3.656v5.688z"
+                fill="#1F1E25" />
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</body>
+
+</html>

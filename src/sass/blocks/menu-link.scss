@@ -1,0 +1,14 @@
+.menu-link {
+  display: block;
+  padding: 15px 5px;
+  color: $dark;
+
+  &:hover,
+  &:focus {
+    color: $blue;
+  }
+
+  &:active {
+    color: $footer-darkgrey;
+   }
+}
