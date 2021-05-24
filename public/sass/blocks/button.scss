@@ -8,8 +8,7 @@
     color: $dark;
     background-color: $white;
 
-    &:hover,
-    &:focus {
+    &:hover {
       background-color: $background-gray;
     }
 
@@ -22,8 +21,7 @@
     color: $background-gray;
     background-color: $blue;
 
-    &:hover,
-    &:focus {
+    &:hover{
       background-color: $blue-opacity;
     }
 

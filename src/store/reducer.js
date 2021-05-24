@@ -1,4 +1,3 @@
-import dayjs from 'dayjs';
 import {ActionType} from './action';
 import {HISTORY_MAX_LENGTH} from '../const';
 
@@ -10,18 +9,17 @@ const initialState = {
     GBR: 0,
     CNY: 0,
   },
-  historyCourse: [],
-  historyDate: dayjs(),
-  history: [],
+  // historicalCourse: [],
+  historicalCourse: {},
+  historyList: [],
   isLoading: false,
 };
 
-const addToHistory = (history, item) => {
+const addToHistory = (history, newItem) => {
   if (history.length < HISTORY_MAX_LENGTH) {
-    return [...history, item];
-  } else {
-    return [...history.slice(1), item];
+    return [newItem, ...history];
   }
+  return [newItem, ...history.slice(0, -1)];
 };
 
 const reducer = (state = initialState, action) => {
@@ -29,12 +27,12 @@ const reducer = (state = initialState, action) => {
     case ActionType.CLEAR_HISTORY:
       return {
         ...state,
-        history: [],
+        historyList: [],
       };
     case ActionType.ADD_TO_HISTORY:
       return {
         ...state,
-        history: addToHistory(state.history, action.payload),
+        historyList: addToHistory(state.historyList, action.payload),
         isLoading: false,
       };
     case ActionType.REQUEST_COURSE:
@@ -46,6 +44,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentCourse: {...action.payload},
+        isLoading: false,
+      };
+    case ActionType.LOAD_COURSE_HISTORY:
+      return {
+        ...state,
+        historicalCourse: action.payload,
         isLoading: false,
       };
     case ActionType.FAILURE_COURSE:

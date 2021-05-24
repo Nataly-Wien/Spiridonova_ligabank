@@ -36,7 +36,7 @@ MainPage.propTypes = {
 // });
 
 const mapDispatchToProps = (dispatch) => ({
-  onLoadData: (currencyHave, currencyNeed) => dispatch(fetchCurrentCourse(currencyHave, currencyNeed)),
+  onLoadData: () => dispatch(fetchCurrentCourse()),
 });
 
 // export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

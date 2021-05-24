@@ -12,6 +12,10 @@ export const ActionCreator = {
   clearHistory: () => ({
     type: ActionType.CLEAR_HISTORY,
   }),
+  addToHistory: (payload) => ({
+    type: ActionType.ADD_TO_HISTORY,
+    payload,
+  }),
   requestCourse: () => ({
     type: ActionType.REQUEST_COURSE,
   }),
