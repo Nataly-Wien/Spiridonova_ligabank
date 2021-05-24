@@ -2,17 +2,6 @@
   "name": "ligabank",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "dayjs": "^1.10.4",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
-  },
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server",
@@ -37,17 +26,32 @@
       "last 1 safari version"
     ]
   },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dayjs": "^1.10.4",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.2",
+    "react-scripts": "4.0.3",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
+    "web-vitals": "^1.1.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
     "@babel/preset-react": "^7.12.10",
     "babel-loader": "^8.2.2",
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
     "css-loader": "^5.0.2",
     "eslint": "^7.18.0",
     "eslint-config-htmlacademy": "^2.1.0",
     "eslint-plugin-react": "^7.22.0",
     "file-loader": "^6.2.0",
-    "mini-css-extract-plugin": "^1.6.0",
     "node-sass": "^6.0.0",
     "style-loader": "^2.0.0",
     "webpack": "^4.46.0",

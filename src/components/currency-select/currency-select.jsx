@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {CURRENCIES} from '../../const';
+import {Currency} from '../../const';
 
-const CurrencySelect = ({selectName, currency}) => {
+const CurrencySelect = ({selectName, currency, onSelectChange}) => {
   return (
-    <select className="converter-form__control converter-form__control--select" type="text" name={selectName}
-      id="currency-have" value={currency}>
-      {CURRENCIES.map((item, i) => {
+    <select className="converter-form__control converter-form__control--select" name={selectName}
+      id="currency-have" defaultValue={currency} onChange={onSelectChange}>
+      {Object.values(Currency).map((item, i) => {
         return (
           <option value={item} key={`${item}-${i}`}>{item}</option>
         );
@@ -18,6 +18,7 @@ const CurrencySelect = ({selectName, currency}) => {
 CurrencySelect.propTypes = {
   selectName: PropTypes.string,
   currency: PropTypes.string,
+  onSelectChange: PropTypes.func.isRequired,
 };
 
 export default CurrencySelect;

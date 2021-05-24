@@ -36,11 +36,11 @@
   }
 
   &--mobile::before {
-    background-image: url("../../img/mobile.svg")
+    background-image: url("../img/mobile.svg")
   }
 
    &--phone::before {
-    background-image: url("../../img/phone.svg")
+    background-image: url("../img/phone.svg")
   }
 }
 

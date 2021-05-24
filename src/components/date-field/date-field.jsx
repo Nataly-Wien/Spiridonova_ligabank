@@ -13,7 +13,7 @@ const DateField = ({date}) => {
 };
 
 DateField.propTypes = {
-  date: PropTypes.date,
+  date: PropTypes.string.isRequired,
 };
 
 export default DateField;

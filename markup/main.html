@@ -78,15 +78,14 @@
       <h2 class="converter__title">
         Конвертер валют
       </h2>
-      <form class="converter__form converter-form" action="" method="post">
-        <!-- action?-->
+      <form class="converter__form converter-form" method="post">
         <fieldset class="converter-form__fieldset">
-          <legend class="converter-form__legend" for="have">У меня есть</legend>
+          <legend class="converter-form__legend">У меня есть</legend>
           <input class="converter-form__control converter-form__control--input" type="text" name="have" id="have"
             value=1000>
-          <select class="converter-form__control converter-form__control--select" type="text" name="currency-have"
-            id="currency-have" value="RUB">
-            <option value="RUB">RUB</option>
+          <select class="converter-form__control converter-form__control--select" name="currency-have"
+            id="currency-have">
+            <option value="RUB" selected>RUB</option>
             <option value="USD">USD</option>
             <option value="EUR">EUR</option>
             <option value="GBR">GBR</option>
@@ -96,12 +95,12 @@
 
         <div class="converter-form__arrows"></div>
         <fieldset class="converter-form__fieldset">
-          <legend class="converter-form__legend" for="need">Хочу приобрести</legend>
+          <legend class="converter-form__legend">Хочу приобрести</legend>
           <input class="converter-form__control converter-form__control--input" type="text" name="need" id="need">
-          <select class="converter-form__control converter-form__control--select" type="text" name="currency-need"
-            id="currency-need" value="USD">
+          <select class="converter-form__control converter-form__control--select" name="currency-need"
+            id="currency-need">
             <option value="RUB">RUB</option>
-            <option value="USD">USD</option>
+            <option value="USD" selected>USD</option>
             <option value="EUR">EUR</option>
             <option value="GBR">GBR</option>
             <option value="CNY">CNY</option>

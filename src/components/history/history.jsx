@@ -1,5 +1,9 @@
 import React from 'react';
 
+const onClearHistoryClick = () => {
+  // array = [];
+};
+
 const History = () => {
   return (
     <section className="history container">
@@ -97,7 +101,7 @@ const History = () => {
             </div>
           </li>
         </ul>
-        <button className="history__button button button--blue">Очистить историю</button>
+        <button className="history__button button button--blue" onClick={onClearHistoryClick}>Очистить историю</button>
       </div>
     </section>
   );
