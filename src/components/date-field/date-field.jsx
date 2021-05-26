@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import flatpickr from 'flatpickr';
 import dayjs from 'dayjs';
-import '../../../node_modules/flatpickr/dist/flatpickr.min.css';
+import '../../../public/css/flatpickr.min.css';
 
 const DateField = ({date, onDateChange}) => {
 
@@ -14,9 +14,9 @@ const DateField = ({date, onDateChange}) => {
       enableTime: false,
     });
 
-    // return function destroyCalender() {
-    //   flatpickr().destroy();
-    // }; ??
+    return function destroyCalender() {
+      flatpickr().destroy();
+    };
   }, []);
 
   const onDateInput = (evt) => {

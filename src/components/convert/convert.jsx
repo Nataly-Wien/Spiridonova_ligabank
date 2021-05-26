@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
@@ -12,6 +12,9 @@ import {INITIAL_AMOUNT, INITIAL_CURRENCY} from '../../const';
 import {courseType} from '../../types-validation';
 
 const Convert = ({currentCourse, todayCourse, historicalCourses, setCourse, loadHistoryCourse, isLoading, isError}) => {
+  useEffect(() => {
+    onInputHaveChange(inputs.valueHave);
+  }, [currentCourse]);
 
   const [inputs, setInputs] = useState({
     valueHave: INITIAL_AMOUNT,
