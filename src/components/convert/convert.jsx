@@ -5,29 +5,32 @@ import dayjs from 'dayjs';
 import {ActionCreator} from '../../store/action';
 import CurrencyFieldset from '../currency-fieldset/currency-fieldset';
 import DateField from '../date-field/date-field';
-import {
-  INITIAL_AMOUNT_HAVE, INITIAL_AMOUNT_NEED, INITIAL_CURRENCY_HAVE,
-  INITIAL_CURRENCY_NEED
-} from '../../const';
+import SaveHistoryButton from '../save-history-button/saveHistoryButton';
+import {fetchHistoryCourse} from '../../store/api-actions';
+import {formatDate, isToday} from '../../common';
+import {INITIAL_AMOUNT, INITIAL_CURRENCY} from '../../const';
+import {courseType} from '../../types-validation';
 
-const Convert = ({currentCourse, historicalCourse, pushHistory}) => {
+const Convert = ({currentCourse, todayCourse, historicalCourses, setCourse, loadHistoryCourse, isLoading, isError}) => {
+
   const [inputs, setInputs] = useState({
-    valueHave: INITIAL_AMOUNT_HAVE,
-    valueNeed: INITIAL_AMOUNT_NEED,
-    moneyHave: INITIAL_CURRENCY_HAVE,
-    moneyNeed: INITIAL_CURRENCY_NEED,
+    valueHave: INITIAL_AMOUNT,
+    valueNeed: INITIAL_AMOUNT,
+    currencyHave: INITIAL_CURRENCY.have,
+    currencyNeed: INITIAL_CURRENCY.need,
     date: dayjs().format(`DD.MM.YYYY`),
   });
 
-  const calculate = (amount, currency1, currency2, date) => {
-    const getCourseToConvert = () => date === dayjs().format(`DD.MM.YYYY`) ? currentCourse : historicalCourse;
-    return Number(((amount * getCourseToConvert()[currency1]) / getCourseToConvert()[currency2]).toFixed(4));
+  const convert = (amount, currency1, currency2) => {
+    const result = Number(((amount * currentCourse[currency1.toLowerCase()]) / currentCourse[currency2.toLowerCase()]).toFixed(4));
+
+    return isNaN(result) ? 0 : result;
   };
 
-  const onInputHaveChange = (evt) => {
-    let {valueHave, valueNeed, moneyHave, moneyNeed, date} = inputs;
-    valueHave = +evt.target.value;
-    valueNeed = calculate(valueHave, moneyNeed, moneyHave, date);
+  const onInputHaveChange = (value) => {
+    let {valueHave, valueNeed, currencyHave, currencyNeed} = inputs;
+    valueHave = value;
+    valueNeed = convert(valueHave, currencyNeed, currencyHave);
     setInputs({
       ...inputs,
       valueHave,
@@ -35,10 +38,10 @@ const Convert = ({currentCourse, historicalCourse, pushHistory}) => {
     });
   };
 
-  const onInputNeedChange = (evt) => {
-    let {valueHave, valueNeed, moneyHave, moneyNeed, date} = inputs;
-    valueNeed = +evt.target.value;
-    valueHave = calculate(valueNeed, moneyHave, moneyNeed, date);
+  const onInputNeedChange = (value) => {
+    let {valueHave, valueNeed, currencyHave, currencyNeed} = inputs;
+    valueNeed = value;
+    valueHave = convert(valueNeed, currencyHave, currencyNeed);
     setInputs({
       ...inputs,
       valueHave,
@@ -46,69 +49,85 @@ const Convert = ({currentCourse, historicalCourse, pushHistory}) => {
     });
   };
 
-  const onSelectHaveChange = (evt) => {
-    let {valueHave, valueNeed, moneyHave, moneyNeed, date} = inputs;
-    moneyHave = evt.target.value;
-    valueHave = calculate(valueNeed, moneyHave, moneyNeed, date);
+  const onSelectHaveChange = (value) => {
+    let {valueHave, valueNeed, currencyHave, currencyNeed} = inputs;
+    currencyHave = value;
+    valueNeed = convert(valueHave, currencyNeed, currencyHave);
     setInputs({
       ...inputs,
-      moneyHave,
-      valueHave,
-    });
-  };
-
-  const onSelectNeedChange = (evt) => {
-    let {valueHave, valueNeed, moneyHave, moneyNeed, date} = inputs;
-    moneyNeed = evt.target.value;
-    valueNeed = calculate(valueHave, moneyNeed, moneyHave, date);
-    setInputs({
-      ...inputs,
-      moneyNeed,
+      currencyHave,
       valueNeed,
     });
   };
 
-  const onDateChange = (evt) => {
-    let {valueHave, valueNeed, moneyHave, moneyNeed} = inputs;
-    valueNeed = calculate(valueHave, moneyNeed, moneyHave, evt.target.value);
+  const onSelectNeedChange = (value) => {
+    let {valueHave, valueNeed, currencyHave, currencyNeed} = inputs;
+    currencyNeed = value;
+    valueNeed = convert(valueHave, currencyNeed, currencyHave);
     setInputs({
       ...inputs,
-      date: evt.target.value,
+      currencyNeed,
       valueNeed,
     });
   };
 
-  const onSaveHistoryClick = () => pushHistory(inputs);
+  const onDateChange = (calenderDate) => {
+    setInputs({
+      ...inputs,
+      date: calenderDate,
+    });
+
+    if (isToday(calenderDate)) {
+      setCourse({...todayCourse});
+    } else {
+      const course = (historicalCourses.find((item) => item.date === formatDate(calenderDate)));
+      if (course) {
+        setCourse({...course});
+      } else {
+        loadHistoryCourse(formatDate(calenderDate));
+      }
+    }
+  };
 
   return (
     <section className="converter container">
       <h2 className="converter__title">Конвертер валют</h2>
       <form className="converter__form converter-form" action="" method="post">
-        <CurrencyFieldset legend={`У меня есть`} fieldName={`have`} amount={inputs.valueHave} currency={inputs.moneyHave}
+        <CurrencyFieldset legend={`У меня есть`} fieldName={`have`} amount={inputs.valueHave} currency={inputs.currencyHave}
           onInputChange={onInputHaveChange} onSelectChange={onSelectHaveChange} />
-        <div className="converter-form__arrows"></div>
-        <CurrencyFieldset legend={`Хочу приобрести`} fieldName={`need`} amount={inputs.valueNeed} currency={inputs.moneyNeed}
+        {!isLoading && <div className="converter-form__arrows"></div> ||
+          <div className="converter-form__arrows converter-form__arrows--spinner"></div>}
+        <CurrencyFieldset legend={`Хочу приобрести`} fieldName={`need`} amount={inputs.valueNeed} currency={inputs.currencyNeed}
           onInputChange={onInputNeedChange} onSelectChange={onSelectNeedChange} />
-        <DateField onDateChange={onDateChange} />
-        <button className="converter-form__button button button--blue" type="button" onClick={onSaveHistoryClick}>Сохранить результат</button>
+        <DateField date={inputs.date} onDateChange={onDateChange} />
+        {isError && <div className="converter-form__error">Ошибка сети, курс не загружен</div>}
+        <SaveHistoryButton data={inputs} />
       </form>
     </section>
   );
 };
 
 Convert.propTypes = {
-  currentCourse: PropTypes.object.isRequired,
-  historicalCourse: PropTypes.arrayOf(PropTypes.object).isRequired,
-  pushHistory: PropTypes.func.isRequired,
+  currentCourse: courseType,
+  todayCourse: courseType,
+  historicalCourses: PropTypes.arrayOf(courseType).isRequired,
+  loadHistoryCourse: PropTypes.func.isRequired,
+  setCourse: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+  isError: PropTypes.bool.isRequired,
 };
 
-const mapStateToProps = ({currentCourse, historicalCourse}) => ({
+const mapStateToProps = ({currentCourse, todayCourse, historicalCourses, isLoading, isError}) => ({
   currentCourse,
-  historicalCourse,
+  todayCourse,
+  historicalCourses,
+  isLoading,
+  isError,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  pushHistory: (historyItem) => dispatch(ActionCreator.addToHistory(historyItem)),
+  loadHistoryCourse: (courseDate) => dispatch(fetchHistoryCourse(courseDate)),
+  setCourse: (course) => dispatch(ActionCreator.setCurrentCourse(course)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Convert);

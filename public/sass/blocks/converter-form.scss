@@ -40,9 +40,12 @@
   }
 
   &--input-date {
+    position: relative;
+    z-index: 5;
     font-weight: 400;
     padding-left: 115px;
     text-align: left;
+    background-color: transparent;
   }
 }
 
@@ -62,20 +65,53 @@
 
   &::before, &::after {
     @include pseudo();
-    width: 53px;
+    width: 52px;
     height: 18px;
     background-image: url("../img/arrow.svg");
+    background-repeat: no-repeat;
   }
 
   &::before {
     top: 61px;
-    left: -24px;
+    left: -22px;
     transform: rotate(180deg);
   }
 
   &::after {
-    top: 79px;
-    left: -20px;
+    top: 78px;
+    left: -22px;
+  }
+
+  &--spinner::before {
+    animation-name: rotate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to
+      {
+        transform: rotate(-360deg);
+      }
+  }
+
+  &--spinner::after {
+    animation-name: rotate;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to
+      {
+        transform: rotate(350deg);
+      }
   }
 }
 
@@ -85,6 +121,7 @@
 
 .converter-form__calender {
   position: absolute;
+  z-index: 4;
   top: 27px;
   right: 18px;
   width: 43px;
@@ -97,25 +134,17 @@
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
-
-    &:hover,
-    &:focus {
-      box-shadow: $button-shadow;
-    }
-
-    &:active {
-      top: 28px;
-      right: 17px;
-   }
 }
 
 .converter-form__button {
-  margin: 23px 0 60px auto;
+  margin: 23px 0 60px 0;
   padding-left: 108px;
   padding-right: 100px;
   border: none;
 }
 
-.converter-form__spinner-text {
-  margin: auto;
+.converter-form__error {
+  @include font(500, 20px, 23px);
+  padding: 40px 25px;
+  color: tomato;
 }

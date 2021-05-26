@@ -1,21 +1,14 @@
 export const ActionType = {
-  CLEAR_HISTORY: `history/clearHistory`,
-  ADD_TO_HISTORY: `history/addToHistory`,
   REQUEST_COURSE: `data/requestCourse`,
   FAILURE_COURSE: `data/failureCourse`,
   LOAD_COURSE_TODAY: `data/loadCourseToday`,
   LOAD_COURSE_HISTORY: `data/loadCourseHistory`,
-  SET_HISTORY_DATE: `history/setDate`,
+  SET_CURRENT_COURSE: `conversion/setCurrentCourse`,
+  CLEAR_HISTORY: `history/clearHistory`,
+  ADD_TO_HISTORY: `history/addToHistory`,
 };
 
 export const ActionCreator = {
-  clearHistory: () => ({
-    type: ActionType.CLEAR_HISTORY,
-  }),
-  addToHistory: (payload) => ({
-    type: ActionType.ADD_TO_HISTORY,
-    payload,
-  }),
   requestCourse: () => ({
     type: ActionType.REQUEST_COURSE,
   }),
@@ -30,8 +23,15 @@ export const ActionCreator = {
     type: ActionType.LOAD_COURSE_HISTORY,
     payload,
   }),
-  setHistoryDate: (payload) => ({
-    type: ActionType.SET_HISTORY_DATE,
+  setCurrentCourse: (payload) => ({
+    type: ActionType.SET_CURRENT_COURSE,
+    payload,
+  }),
+  clearHistory: () => ({
+    type: ActionType.CLEAR_HISTORY,
+  }),
+  addToHistory: (payload) => ({
+    type: ActionType.ADD_TO_HISTORY,
     payload,
   }),
 };

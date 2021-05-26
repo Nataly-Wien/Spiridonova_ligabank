@@ -2,17 +2,24 @@ import {ActionType} from './action';
 import {HISTORY_MAX_LENGTH} from '../const';
 
 const initialState = {
-  currentCourse: {
-    RUB: 0,
-    USD: 0,
-    EUR: 0,
-    GBR: 0,
-    CNY: 0,
+  todayCourse: {
+    rub: 0,
+    usd: 0,
+    eur: 0,
+    gbp: 0,
+    cny: 0,
   },
-  // historicalCourse: [],
-  historicalCourse: {},
+  currentCourse: {
+    rub: 0,
+    usd: 0,
+    eur: 0,
+    gbp: 0,
+    cny: 0,
+  },
+  historicalCourses: [],
   historyList: [],
   isLoading: false,
+  isError: false,
 };
 
 const addToHistory = (history, newItem) => {
@@ -24,6 +31,39 @@ const addToHistory = (history, newItem) => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
+    case ActionType.REQUEST_COURSE:
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    case ActionType.LOAD_COURSE_TODAY:
+      return {
+        ...state,
+        todayCourse: {...action.payload},
+        currentCourse: {...action.payload},
+        isLoading: false,
+        isError: false,
+      };
+    case ActionType.LOAD_COURSE_HISTORY:
+      return {
+        ...state,
+        historicalCourses: [...state.historicalCourses, action.payload],
+        currentCourse: {...action.payload},
+        isLoading: false,
+        isError: false,
+      };
+    case ActionType.FAILURE_COURSE:
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    case ActionType.SET_CURRENT_COURSE:
+      return {
+        ...state,
+        currentCourse: {...action.payload},
+      };
     case ActionType.CLEAR_HISTORY:
       return {
         ...state,
@@ -33,37 +73,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         historyList: addToHistory(state.historyList, action.payload),
-        isLoading: false,
-      };
-    case ActionType.REQUEST_COURSE:
-      return {
-        ...state,
-        isLoading: true,
-      };
-    case ActionType.LOAD_COURSE_TODAY:
-      return {
-        ...state,
-        currentCourse: {...action.payload},
-        isLoading: false,
-      };
-    case ActionType.LOAD_COURSE_HISTORY:
-      return {
-        ...state,
-        historicalCourse: action.payload,
-        isLoading: false,
-      };
-    case ActionType.FAILURE_COURSE:
-      return {
-        ...state,
-        isLoading: false,
-      };
-    case ActionType.SET_HISTORY_DATE:
-      return {
-        ...state,
-
       };
   }
-
   return state;
 };
 

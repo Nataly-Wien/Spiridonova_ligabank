@@ -28,16 +28,15 @@ const MainPage = ({onLoadData}) => {
 
 MainPage.propTypes = {
   onLoadData: PropTypes.func.isRequired,
+  isLoading: PropTypes.bool.isRequired,
 };
 
-// const mapStateToProps = ({currencyHave, currencyNeed}) => ({
-//   currencyHave,
-//   currencyNeed,
-// });
+const mapStateToProps = ({isLoading}) => ({
+  isLoading,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onLoadData: () => dispatch(fetchCurrentCourse()),
 });
 
-// export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
-export default connect(null, mapDispatchToProps)(MainPage);
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

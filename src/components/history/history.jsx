@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import {ActionCreator} from '../../store/action';
+import {historyType} from '../../types-validation';
 
 const History = ({historyList, clearHistory}) => {
   const onClearHistoryClick = () => clearHistory();
@@ -15,11 +16,11 @@ const History = ({historyList, clearHistory}) => {
             return (<li className="history__item" key={`${item}-${i}`}>
               <span className="history__item--date">{item.date}</span>
               <div className="history__item-wrapper">
-                <span className="history__item--before">{`${item.valueHave} ${item.moneyHave}`}</span>
+                <span className="history__item--before">{`${item.valueHave} ${item.currencyHave}`}</span>
                 <span className="history__item--arrow">
                   <span className="visually-hidden">&#10230;</span>
                 </span>
-                <span className="history__item--after">{`${item.valueNeed} ${item.moneyNeed}`}</span>
+                <span className="history__item--after">{`${item.valueNeed} ${item.currencyHave}`}</span>
               </div>
             </li>);
           })}
@@ -31,7 +32,7 @@ const History = ({historyList, clearHistory}) => {
 };
 
 History.propTypes = {
-  historyList: PropTypes.arrayOf(PropTypes.object).isRequired,
+  historyList: PropTypes.arrayOf(historyType).isRequired,
   clearHistory: PropTypes.func.isRequired,
 };
 
