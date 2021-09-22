@@ -31,6 +31,7 @@
     background-image: url("../img/select-caret.svg");
     background-position: right 14px top 23px;
     background-repeat: no-repeat;
+    cursor: pointer;
   }
 
   &--select::before {
